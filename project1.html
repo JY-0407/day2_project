@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        section{
+            width: 100%;
+            height: 100vh;
+        }
+
+        section nav{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed;
+            right: 0;
+            left: 0;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        section nav .logo img{
+            width: 100px;
+            cursor: pointer;
+            margin: 7px 0;
+        }
+
+        section nav ul{
+            list-style: none;
+        }
+
+        section nav ul li{
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        section nav ul li a{
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            font-size: 17px;
+            transition: 0.1s;
+        }
+
+        section nav ul li a::after{
+            content: '';
+            width: 0;
+            height: 2px;
+            background: #fac031;
+            display: block;
+            transition: 0.2s linear;
+        }
+
+        section nav ul li a:hover::after{
+            width: 100%;
+        }
+
+        section nav ul li a:hover{
+            color: #fac031;
+        }
+
+        section .main{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+            top: 130px;
+        }
+
+        section .main .men_text h1{
+            font-size: 60px;
+            position: relative;
+            top: -90px;
+            left: 20px;
+        }
+
+        section .main .men_text h1 span{
+            margin-left: 15px;
+            color: #fac031;
+            font-family: mv boli;
+            line-height: 22px;
+            font-size: 70px;
+        }
+
+        section .main .main_image img{
+            width: 700px;
+            position: relative;
+            left: 70px;
+        }
+
+        section p{
+            width: 650px;
+            text-align: justify;
+            position: relative;
+            left: 123px;
+            bottom: 120px;
+            line-height: 22px;
+        }
+
+        /*Menu*/
+
+        .menu{
+            width: 100%;
+            padding: 70px 0;
+        }
+
+        .menu h1{
+            font-size: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .menu h1 span{
+            color: #fac031;
+            margin-left: 15px;
+            font-family: mv boli;
+        }
+
+        .menu h1 span::after{
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #fac031;
+            display: block;
+            position: relative;
+            bottom: 15px;
+        }
+
+        .menu .menu_box{
+            width: 95%;
+            margin: 0 auto;
+            padding: 130px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-gap: 15px;
+            text-align: center;
+        }
+
+        .menu .menu_box .menu_card{
+            width: 325px;
+            height: 480px;
+            padding-top: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .menu .menu_box .menu_card .menu_image{
+            width: 300px;
+            height: 245px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .menu .menu_box .menu_card .menu_image img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: 0.3s;
+        }
+
+        .menu .menu_box .menu_card .menu_image:hover img{
+            transform: scale(1.1);
+        }
+
+        .menu .menu_box .menu_card .menu_info h2{
+            width: 60%;
+            text-align: center;
+            margin: 10px auto 10px auto;
+            font-size: 25px;
+            color: #fac031;
+        }
+
+        .menu .menu_box .menu_card .menu_info p{
+            text-align: center;
+            margin-top: 8px;
+            line-height: 21px;
+        }
+
+        .menu .menu_box .menu_card .menu_info h3{
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .menu .menu_box .menu_card .menu_info .menu_icon{
+            color: #fac031;
+            text-align: center;
+            margin: 10px 0 10px 0;
+        }
+
+
+        /*Chief*/
+
+        .chief{
+            width: 100%;
+            height: 90vh;
+            padding: 70px 0;
+        }
+
+        .chief h1{
+            font-size: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .chief h1 span{
+            margin-left: 15px;
+            color: #fac031;
+            font-family: mv boli;
+        }
+
+        .chief h1 span::after{
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #fac031;
+            position: relative;
+            bottom: 15px;
+            display: block;
+        }
+
+        .chief .chief_box{
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .chief .chief_box .chief_card{
+            width: 350px;
+            height: 490px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            border-radius: 8px;
+            padding: 8px 20px;
+            margin: 0 8px;
+            display: inline-block;
+        }
+
+        .chief .chief_box .chief_card .chief_profile{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+
+        .chief .chief_box .chief_card .chief_profile img{
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+            border: 5px solid #cccccc;
+        }
+
+        .chief .chief_box .chief_card .chief_text{
+            text-align: center;
+        }
+
+        .chief .chief_box .chief_card .chief_text .name{
+            color: #000;
+        }
+
+        .chief .chief_box .chief_card .chief_text p{
+            text-align: center;
+            line-height: 22px;
+        }
+
+    </style>
+    </head>
+<body>
+
+    <section id="Home">
+        <nav>
+            <a href="#Home" class="logo">
+                <img src="image/logo.png">
+            </a>
+
+            <ul>
+                <li><a href="#Home">Home</a></li>
+                <li><a href="#Menu">Menu</a></li>
+                <li><a href="#Chief">Chief</a></li>
+            </ul>
+
+        </nav>
+
+        <div class="main">
+
+            <div class="men_text">
+                <h1><span>미식의 즐거움을</span><br>느껴 보세요</h1>
+            </div>
+
+            <div class="main_image">
+                <img src="image/stake.png">
+            </div>
+
+        </div>
+
+        <p>
+            최고의 요리를 활기찬 분위기에서 즐겨보세요. 클래식한 요리와 함께
+            직접 드라이 에이징 한 그릴 메뉴 및 쉐어링 코스 등 휼륭한 요리를 친근하게 
+            즐길 수 있도록 세심하게 준비했습니다. 음식의 마무리를 장식하는 디저트 메뉴는
+            더 다양하고 더 달콤한 시간을 더해드립니다.
+        </p>
+
+    </section>
+
+
+    <!--Menu-->
+
+    <div class="menu" id="Menu">
+        <h1>Our<span>Menu</span></h1>
+
+        <div class="menu_box">
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/tibonstake.jpeg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>T-bone</h2>
+                    <p>
+                        드라이에이징 등심 숙성 소고기 티본 스테이크 육우 채끝살 T본 STEAK
+                    </p>
+                    <h3>30000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+            
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/Porterhouse.jpg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>Porterhouse</h2>
+                    <p>
+                        운동량이 적은 복강 안쪽에 위치한 안심살은 결이 곱고 연해 부드러운 식감을 자랑하는 1등급 한우
+                    </p>
+                    <h3>29000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/pasta.jpg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>pasta</h2>
+                    <p>
+                        살이통통 새우와 연두빛색감, 은은하고 풍부한 맛 입안 가득 향긋함과 감칠맛으로 즐거운 한끼
+                    </p>
+                    <h3>19000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/lasagna.webp">
+                </div>
+
+                <div class="menu_info">
+                    <h2>lasagna</h2>
+                    <p>
+                        이탈리아 파스타로, 납작한 면과 치즈, 토마토 소스, 고기, 채소를 올린 요리
+                    </p>
+                    <h3>18000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/lobster.jfif">
+                </div>
+
+                <div class="menu_info">
+                    <h2>lobster</h2>
+                    <p>
+                        더 이상 찌거나 굽지 말고, 회로 드셔보세요. 탱탱하고 쫄깃한 식감을 느낄수 있는 요리 
+                    </p>
+                    <h3>60000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/buger.jpg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>Buger</h2>
+                    <p>
+                        육즙 가득한 수제패티와 신선한 야채가 잘 어우러져 기본에 충실한 미국 동부식 오리지날 버거
+                    </p>
+                    <h3>13000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/pizza.jpg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>pizza</h2>
+                    <p>
+                        저온과 상온에서 발효시킨 쫄깃한 도우와 양송이, 치즈와 바질의 조화로운 피자
+                    </p>
+                    <h3>14000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/lostchicken.jpg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>roast chicken</h2>
+                    <p>
+                        겉은 바삭하고 속은 부드러운 통닭구이 요리
+                    </p>
+                    <h3>15000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/strawberry.jfif">
+                </div>
+
+                <div class="menu_info">
+                    <h2>strawberry crople</h2>
+                    <p>
+                        크로플 위에 부드러운 크림과 달달한 아이스크림이 올라가고, 주변에 딸기와 블루베리로 토핑이 한가득 올린 디저트
+                    </p>
+                    <h3>20000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/ice_cream.jfif">
+                </div>
+
+                <div class="menu_info">
+                    <h2>Ice Cream</h2>
+                    <p>
+                        시원함과 달콤함으로 마지막을 장식할 디저트
+                    </p>
+                    <h3>10000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/cheezecake.jpg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>cheesecake</h2>
+                    <p>
+                        초코와 과일의 절묘한 미식가의 치즈 케이크
+                    </p>
+                    <h3>23000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="image/wine.jpg">
+                </div>
+
+                <div class="menu_info">
+                    <h2>wine</h2>
+                    <p>
+                        오랜 세월 동안 숙성해온 명품 브랜드 와인
+                    </p>
+                    <h3>14000</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+            </div> 
+            
+        </div>
+
+    </div>
+
+
+    <!--Chief-->
+
+    <div class="chief" id="Chief">
+        <h1>Our<span>Chief</span></h1>
+    
+        <div class="chief_box">
+            <div class="chief_card">
+    
+                <div class="chief_profile">
+                    <img src="image/chef1.png">
+                </div>
+    
+                <div class="chief_text">
+                    <h2 class="name">John Deo</h2>
+                    <br>
+    
+                    <p>
+                        -La Scuola Inernazionale di Cucina Italiana ALMA
+                        국제 이탈리아요리학교 '알마' 졸업<br>
+                        -Disciples Escoffier South-Korea Delegation
+                        에스코피에 요리연구소 국제 및 한국지부 회원<br>
+                        -Buona Sera Ristorante 보나세라 이탈리아 레스토랑 수셰프
+                    </p>
+    
+                </div>
+    
+            </div>
+
+            <div class="chief_card">
+    
+                <div class="chief_profile">
+                    <img src="image/chef2.png">
+                </div>
+    
+                <div class="chief_text">
+                    <h2 class="name">Kamala Harris</h2>
+                    <br>
+    
+                    <p>
+                        -現 돼지고기 전문 레스토랑 ‘M’ 총괄 셰프<br>
+                        -現 레스토랑 ‘M’ 총괄 셰프<br>
+                        -前 캐나다 토론토, 노스요크 등의 유명 레스토랑 오너 셰프
+                        -뉴욕 CIA(Culinary Institute of America) 졸업
+                    </p>
+    
+                </div>
+    
+            </div>
+
+            <div class="chief_card">
+    
+                <div class="chief_profile">
+                    <img src="image/chef3.jpg">
+                </div>
+    
+                <div class="chief_text">
+                    <h2 class="name">Noah Smith</h2>
+                    <br>
+    
+                    <p>
+                        -뉴욕의 요리학교 CIA를 졸업<br>
+                        -라스베이거스의 미쉐린 3스타 레스토랑 조엘 로부숑Joel Robuchon 디저트 파트 요리사<br>
+                        -뉴욕의 미쉐린 2스타 아쿠아비트Aquavit 디저트 파트 요리사<br>
+                        -신사동에서 플레이티드 디저트 전문 숍 소나SONA를 운영<br>
+                        -대학 출강과 호텔·레스토랑 디저트 컨설팅<br>
+                    </p>
+    
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+    
+</body>
+</html>
